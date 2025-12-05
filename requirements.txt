@@ -1,0 +1,16 @@
+# Core dependencies
+python>=3.8
+
+# LLM providers (install the ones you plan to use)
+# OpenAI
+openai>=1.0.0
+
+# Anthropic Claude
+anthropic>=0.18.0
+
+# Google Gemini (recommended for PNLF^S)
+google-generativeai>=0.3.0
+
+# Optional: for advanced data handling
+# pandas>=2.0.0
+# numpy>=1.24.0

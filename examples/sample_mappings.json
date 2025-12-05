@@ -1,0 +1,168 @@
+[
+  {
+    "name": "Mouse-Human Alveolus Epithelium (from instructions.md)",
+    "description": "Example from the PNLF^S specification",
+    "source": {
+      "ontology_id": "mouse:MA_0001771",
+      "label": "alveolus epithelium",
+      "parent_class": "lung epithelium",
+      "synonyms": []
+    },
+    "target": {
+      "ontology_id": "human:NCI_C12867",
+      "label": "Alveolar_Epithelium",
+      "parent_class": "Epithelium",
+      "synonyms": [
+        "Lung Alveolar Epithelia",
+        "Alveolar Epithelium",
+        "Epithelia of lung alveoli"
+      ]
+    },
+    "ground_truth": true,
+    "notes": "These entities refer to the same anatomical structure in different species"
+  },
+  {
+    "name": "Cardiac Muscle vs Skeletal Muscle",
+    "description": "Different types of muscle tissue - should be False",
+    "source": {
+      "label": "cardiac muscle",
+      "parent_class": "muscle tissue",
+      "synonyms": ["heart muscle"]
+    },
+    "target": {
+      "label": "skeletal muscle",
+      "parent_class": "muscle tissue",
+      "synonyms": ["voluntary muscle", "striated muscle"]
+    },
+    "ground_truth": false,
+    "notes": "Both are muscle tissues but fundamentally different types"
+  },
+  {
+    "name": "Neuron vs Nerve Cell",
+    "description": "Synonymous terms for the same cell type - should be True",
+    "source": {
+      "label": "neuron",
+      "parent_class": "nerve cell",
+      "synonyms": ["nerve cell", "neural cell"]
+    },
+    "target": {
+      "label": "nerve cell",
+      "parent_class": "nervous system cell",
+      "synonyms": ["neuron", "neurocyte"]
+    },
+    "ground_truth": true,
+    "notes": "These are different names for the same cell type"
+  },
+  {
+    "name": "Hepatocyte vs Liver Cell",
+    "description": "Hepatocyte is the specific term for liver cell - should be True",
+    "source": {
+      "label": "hepatocyte",
+      "parent_class": "epithelial cell",
+      "synonyms": ["liver cell", "hepatic cell"]
+    },
+    "target": {
+      "label": "liver cell",
+      "parent_class": "organ cell",
+      "synonyms": ["hepatocyte", "hepatic parenchymal cell"]
+    },
+    "ground_truth": true,
+    "notes": "Hepatocyte is the scientific term for liver cell"
+  },
+  {
+    "name": "Erythrocyte vs Leukocyte",
+    "description": "Different types of blood cells - should be False",
+    "source": {
+      "label": "erythrocyte",
+      "parent_class": "blood cell",
+      "synonyms": ["red blood cell", "RBC"]
+    },
+    "target": {
+      "label": "leukocyte",
+      "parent_class": "blood cell",
+      "synonyms": ["white blood cell", "WBC"]
+    },
+    "ground_truth": false,
+    "notes": "Red blood cells and white blood cells are completely different"
+  },
+  {
+    "name": "Pulmonary Artery vs Lung Artery",
+    "description": "Same anatomical structure with different naming - should be True",
+    "source": {
+      "label": "pulmonary artery",
+      "parent_class": "artery",
+      "synonyms": ["lung artery", "arteriae pulmonales"]
+    },
+    "target": {
+      "label": "lung artery",
+      "parent_class": "systemic artery",
+      "synonyms": ["pulmonary artery"]
+    },
+    "ground_truth": true,
+    "notes": "These refer to the same blood vessel"
+  },
+  {
+    "name": "Kidney vs Renal Organ",
+    "description": "Same organ with Latin and common names - should be True",
+    "source": {
+      "label": "kidney",
+      "parent_class": "excretory organ",
+      "synonyms": ["renal organ", "ren"]
+    },
+    "target": {
+      "label": "renal organ",
+      "parent_class": "urinary system organ",
+      "synonyms": ["kidney", "nephros"]
+    },
+    "ground_truth": true,
+    "notes": "Kidney and renal organ are the same"
+  },
+  {
+    "name": "Pancreas vs Spleen",
+    "description": "Different abdominal organs - should be False",
+    "source": {
+      "label": "pancreas",
+      "parent_class": "digestive gland",
+      "synonyms": ["pancreatic organ"]
+    },
+    "target": {
+      "label": "spleen",
+      "parent_class": "lymphoid organ",
+      "synonyms": ["splenic organ", "lien"]
+    },
+    "ground_truth": false,
+    "notes": "Completely different organs with different functions"
+  },
+  {
+    "name": "Myocardium vs Heart Muscle",
+    "description": "Scientific and common term for heart muscle - should be True",
+    "source": {
+      "label": "myocardium",
+      "parent_class": "cardiac tissue",
+      "synonyms": ["heart muscle", "cardiac muscle layer"]
+    },
+    "target": {
+      "label": "heart muscle",
+      "parent_class": "muscle tissue",
+      "synonyms": ["myocardium", "cardiac muscle"]
+    },
+    "ground_truth": true,
+    "notes": "Myocardium is the medical term for heart muscle"
+  },
+  {
+    "name": "Dendrite vs Axon",
+    "description": "Different parts of a neuron - should be False",
+    "source": {
+      "label": "dendrite",
+      "parent_class": "neuron projection",
+      "synonyms": ["dendritic process"]
+    },
+    "target": {
+      "label": "axon",
+      "parent_class": "neuron projection",
+      "synonyms": ["nerve fiber", "axonal process"]
+    },
+    "ground_truth": false,
+    "notes": "Dendrites and axons are distinct neuronal structures"
+  }
+]
