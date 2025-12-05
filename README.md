@@ -12,7 +12,7 @@ This project implements an LLM-based oracle diagnostic engine for ontology align
 - **Multi-Provider Support**: Works with OpenAI GPT, Anthropic Claude, and Google Gemini (recommended)
 - **Interactive Learning Environment**: CLI tool for experimenting with prompts and diagnostics
 - **Batch Evaluation**: Evaluate performance on multiple mappings with standard metrics
-- **Sample Dataset**: 10 biomedical ontology mapping examples included
+- **Multiple Domain Datasets**: Biomedical (10 examples) and Manufacturing/IoT (15 examples) ontology mappings included
 
 ## Project Structure
 
@@ -24,7 +24,8 @@ ccw-ontology_aligment_with_LLM/
 │   ├── prompt_builder.py     # PNLF^S prompt builder implementation
 │   └── oracle.py             # LLM oracle diagnostic engine
 ├── examples/
-│   └── sample_mappings.json  # Sample biomedical ontology mappings
+│   ├── sample_mappings.json                  # Biomedical ontology mappings (10)
+│   └── sample_mappings_manufacturing_iot.json # Manufacturing & IoT mappings (15)
 ├── interactive.py            # Interactive CLI learning environment
 ├── requirements.txt          # Python dependencies
 ├── instructions.md           # Original specification (PNLF^S)
@@ -84,8 +85,9 @@ python interactive.py
 3. **Batch Evaluation**: Evaluate all sample mappings and see performance metrics
 4. **Manual Input Mode**: Enter your own entity pairs for diagnosis
 5. **Configure LLM Provider**: Choose and configure OpenAI, Anthropic, Gemini, or Mock provider
-6. **View Sample Mappings**: Browse the included biomedical ontology examples
-7. **About PNLF^S**: Learn about the prompt template design
+6. **View Sample Mappings**: Browse the included ontology examples
+7. **Switch Dataset**: Toggle between Biomedical and Manufacturing/IoT datasets
+8. **About PNLF^S**: Learn about the prompt template design
 
 ### Programmatic Usage
 
@@ -197,6 +199,8 @@ According to the research in `instructions.md`, the recommended model is:
 
 ## Sample Mappings
 
+### Biomedical Ontology Mappings
+
 The `examples/sample_mappings.json` file contains 10 biomedical ontology mapping examples:
 
 1. Mouse-Human Alveolus Epithelium (from instructions.md)
@@ -209,6 +213,28 @@ The `examples/sample_mappings.json` file contains 10 biomedical ontology mapping
 8. Pancreas vs Spleen (False)
 9. Myocardium vs Heart Muscle (True)
 10. Dendrite vs Axon (False)
+
+### Manufacturing & IoT Ontology Mappings
+
+The `examples/sample_mappings_manufacturing_iot.json` file contains 15 manufacturing and IoT ontology mapping examples:
+
+1. Temperature Sensor vs Thermometer (True)
+2. Pressure Sensor vs Force Sensor (False)
+3. Assembly Line vs Production Line (True)
+4. Actuator vs Motor (False)
+5. Smart Factory vs Industry 4.0 Factory (True)
+6. Conveyor Belt vs Robotic Arm (False)
+7. Quality Inspection vs Quality Control (True)
+8. Defect vs Deviation (False)
+9. Predictive Maintenance vs Condition-Based Maintenance (True)
+10. Preventive Maintenance vs Corrective Maintenance (False)
+11. SCADA System vs Supervisory Control System (True)
+12. PLC vs DCS (False)
+13. IoT Gateway vs Edge Gateway (True)
+14. Machine Learning Model vs Digital Twin (False)
+15. OEE vs Overall Equipment Effectiveness (True)
+
+**Note**: Use the interactive CLI's "Switch Dataset" option to explore different domains.
 
 ## Evaluation Metrics
 
