@@ -26,6 +26,8 @@ def demo_prompt_builder():
     """Demonstrate the PNLF^S prompt builder"""
     print_section("DEMO 1: PNLF^S Prompt Builder")
 
+    print("=== Biomedical Example (from instructions.md) ===\n")
+
     # Example from instructions.md
     source = OntologyEntity(
         label="alveolus epithelium",
@@ -59,6 +61,37 @@ def demo_prompt_builder():
     print("-" * 70)
     prompt = PNLFSPromptBuilder.build_prompt(mapping)
     print(prompt)
+    print("-" * 70)
+
+    print("\n=== Manufacturing/IoT Example ===\n")
+
+    # Manufacturing/IoT example
+    iot_source = OntologyEntity(
+        label="temperature sensor",
+        parent_class="environmental sensor"
+    )
+
+    iot_target = OntologyEntity(
+        label="thermometer",
+        parent_class="measuring instrument",
+        synonyms=["temperature sensor", "temperature measuring device", "thermal detector"]
+    )
+
+    iot_mapping = EntityMapping(
+        source_entity=iot_source,
+        target_entity=iot_target,
+        ground_truth=True
+    )
+
+    print("Input Entities:")
+    print(f"  Source: {iot_source.label} (parent: {iot_source.parent_class})")
+    print(f"  Target: {iot_target.label} (parent: {iot_target.parent_class})")
+    print(f"  Synonyms: {', '.join(iot_target.synonyms)}")
+
+    print("\nGenerated PNLF^S Prompt:")
+    print("-" * 70)
+    iot_prompt = PNLFSPromptBuilder.build_prompt(iot_mapping)
+    print(iot_prompt)
     print("-" * 70)
 
     print("\nThis prompt will be sent to the LLM for True/False diagnosis.")

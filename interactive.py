@@ -29,15 +29,53 @@ class InteractiveCLI:
     def __init__(self):
         self.oracle = None
         self.sample_mappings = []
+        self.current_dataset = None
+        self.available_datasets = self.discover_datasets()
         self.load_sample_mappings()
 
-    def load_sample_mappings(self):
+    def discover_datasets(self):
+        """Discover all available sample dataset files"""
+        examples_dir = os.path.join(os.path.dirname(__file__), 'examples')
+        datasets = {}
+
+        if not os.path.exists(examples_dir):
+            return datasets
+
+        # Find all sample_mappings*.json files
+        for filename in os.listdir(examples_dir):
+            if filename.startswith('sample_mappings') and filename.endswith('.json'):
+                filepath = os.path.join(examples_dir, filename)
+
+                # Determine dataset name
+                if filename == 'sample_mappings.json':
+                    name = 'Biomedical'
+                elif 'manufacturing' in filename or 'iot' in filename:
+                    name = 'Manufacturing & IoT'
+                else:
+                    # Generic name from filename
+                    name = filename.replace('sample_mappings_', '').replace('.json', '').replace('_', ' ').title()
+
+                datasets[name] = filepath
+
+        return datasets
+
+    def load_sample_mappings(self, dataset_name=None):
         """Load sample mappings from examples directory"""
-        sample_file = os.path.join(
-            os.path.dirname(__file__),
-            'examples',
-            'sample_mappings.json'
-        )
+        # If no dataset specified, use the first available or prompt user
+        if dataset_name is None:
+            if self.available_datasets:
+                dataset_name = list(self.available_datasets.keys())[0]
+            else:
+                print("No sample datasets found.")
+                return
+
+        if dataset_name not in self.available_datasets:
+            print(f"Dataset '{dataset_name}' not found.")
+            return
+
+        sample_file = self.available_datasets[dataset_name]
+        self.current_dataset = dataset_name
+        self.sample_mappings = []
 
         if os.path.exists(sample_file):
             with open(sample_file, 'r', encoding='utf-8') as f:
@@ -66,6 +104,8 @@ class InteractiveCLI:
                         'mapping': mapping
                     })
 
+        print(f"Loaded {len(self.sample_mappings)} mappings from '{dataset_name}' dataset.")
+
     def print_header(self):
         """Print application header"""
         print("\n" + "="*70)
@@ -76,13 +116,16 @@ class InteractiveCLI:
     def print_menu(self):
         """Print main menu"""
         print("\n--- Main Menu ---")
+        if self.current_dataset:
+            print(f"Current Dataset: {self.current_dataset} ({len(self.sample_mappings)} mappings)")
         print("1. Preview PNLF^S Prompt")
         print("2. Diagnose with LLM Oracle")
         print("3. Batch Evaluation on Samples")
         print("4. Manual Input Mode")
         print("5. Configure LLM Provider")
         print("6. View Sample Mappings")
-        print("7. About PNLF^S")
+        print("7. Switch Dataset")
+        print("8. About PNLF^S")
         print("0. Exit")
         print()
 
@@ -355,6 +398,33 @@ class InteractiveCLI:
                 print(f"   Ground Truth: {mapping.ground_truth}")
             print()
 
+    def switch_dataset_mode(self):
+        """Switch between available datasets"""
+        print("\n--- Switch Dataset ---\n")
+
+        if not self.available_datasets:
+            print("No datasets available.")
+            return
+
+        print("Available datasets:")
+        dataset_names = list(self.available_datasets.keys())
+        for i, name in enumerate(dataset_names, 1):
+            current = " (current)" if name == self.current_dataset else ""
+            print(f"{i}. {name}{current}")
+
+        print()
+        choice = input(f"Select dataset (1-{len(dataset_names)}): ").strip()
+
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(dataset_names):
+                dataset_name = dataset_names[idx]
+                self.load_sample_mappings(dataset_name)
+            else:
+                print("Invalid selection.")
+        except ValueError:
+            print("Invalid input.")
+
     def about_pnlfs_mode(self):
         """Display information about PNLF^S"""
         print("\n" + "="*70)
@@ -434,6 +504,8 @@ Reference: See instructions.md for full specification
             elif choice == '6':
                 self.view_samples_mode()
             elif choice == '7':
+                self.switch_dataset_mode()
+            elif choice == '8':
                 self.about_pnlfs_mode()
             elif choice == '0':
                 print("\nThank you for using LLM Oracle Learning Environment!")

@@ -65,10 +65,12 @@ result = oracle.diagnose_mapping(mapping)
 
 ## 4. サンプルマッピングを使用
 
+### 生体医学オントロジー
+
 ```python
 import json
 
-# サンプルマッピングをロード
+# 生体医学サンプルマッピングをロード
 with open('examples/sample_mappings.json', 'r') as f:
     samples = json.load(f)
 
@@ -76,6 +78,27 @@ with open('examples/sample_mappings.json', 'r') as f:
 sample = samples[0]
 print(f"Testing: {sample['name']}")
 print(f"Description: {sample['description']}")
+```
+
+### 製造業・IoTオントロジー
+
+```python
+# 製造業・IoTサンプルマッピングをロード
+with open('examples/sample_mappings_manufacturing_iot.json', 'r') as f:
+    samples = json.load(f)
+
+# 例：温度センサーのマッピング
+sample = samples[0]  # Temperature Sensor vs Thermometer
+print(f"Testing: {sample['name']}")
+```
+
+### インタラクティブCLIでデータセット切替
+
+```bash
+python interactive.py
+# メニューから 7 (Switch Dataset) を選択
+# 1. Biomedical
+# 2. Manufacturing & IoT
 ```
 
 ## よくある使用ケース

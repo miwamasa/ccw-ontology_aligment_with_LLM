@@ -1,0 +1,244 @@
+[
+  {
+    "name": "Temperature Sensor vs Thermometer",
+    "description": "IoT sensor terminology - should be True",
+    "source": {
+      "ontology_id": "iot:SENSOR_TEMP_001",
+      "label": "temperature sensor",
+      "parent_class": "environmental sensor",
+      "synonyms": ["temp sensor", "thermal sensor"]
+    },
+    "target": {
+      "ontology_id": "manufacturing:INST_THERM_01",
+      "label": "thermometer",
+      "parent_class": "measuring instrument",
+      "synonyms": ["temperature sensor", "temperature measuring device", "thermal detector"]
+    },
+    "ground_truth": true,
+    "notes": "Different terminology for the same measurement device in IoT vs manufacturing"
+  },
+  {
+    "name": "Pressure Sensor vs Force Sensor",
+    "description": "Different types of sensors - should be False",
+    "source": {
+      "label": "pressure sensor",
+      "parent_class": "mechanical sensor",
+      "synonyms": ["pressure transducer", "pressure detector"]
+    },
+    "target": {
+      "label": "force sensor",
+      "parent_class": "mechanical sensor",
+      "synonyms": ["load cell", "force transducer"]
+    },
+    "ground_truth": false,
+    "notes": "Pressure and force are related but distinct physical quantities"
+  },
+  {
+    "name": "Assembly Line vs Production Line",
+    "description": "Manufacturing process terminology - should be True",
+    "source": {
+      "label": "assembly line",
+      "parent_class": "manufacturing process",
+      "synonyms": ["assembly process", "production assembly"]
+    },
+    "target": {
+      "label": "production line",
+      "parent_class": "manufacturing system",
+      "synonyms": ["assembly line", "manufacturing line", "fabrication line"]
+    },
+    "ground_truth": true,
+    "notes": "Common synonyms in manufacturing industry"
+  },
+  {
+    "name": "Actuator vs Motor",
+    "description": "Actuator is more general than motor - should be False",
+    "source": {
+      "label": "actuator",
+      "parent_class": "mechanical component",
+      "synonyms": ["drive mechanism", "motion device"]
+    },
+    "target": {
+      "label": "motor",
+      "parent_class": "electromechanical device",
+      "synonyms": ["electric motor", "rotary actuator"]
+    },
+    "ground_truth": false,
+    "notes": "Motor is a specific type of actuator, not equivalent"
+  },
+  {
+    "name": "Smart Factory vs Industry 4.0 Factory",
+    "description": "Modern manufacturing concepts - should be True",
+    "source": {
+      "label": "smart factory",
+      "parent_class": "manufacturing facility",
+      "synonyms": ["intelligent factory", "digital factory"]
+    },
+    "target": {
+      "label": "Industry 4.0 factory",
+      "parent_class": "advanced manufacturing facility",
+      "synonyms": ["smart factory", "cyber-physical factory", "intelligent manufacturing system"]
+    },
+    "ground_truth": true,
+    "notes": "Industry 4.0 and smart factory are essentially the same concept"
+  },
+  {
+    "name": "Conveyor Belt vs Robotic Arm",
+    "description": "Different material handling equipment - should be False",
+    "source": {
+      "label": "conveyor belt",
+      "parent_class": "material handling equipment",
+      "synonyms": ["conveyor system", "belt conveyor"]
+    },
+    "target": {
+      "label": "robotic arm",
+      "parent_class": "material handling equipment",
+      "synonyms": ["robot manipulator", "industrial robot"]
+    },
+    "ground_truth": false,
+    "notes": "Both are material handling equipment but completely different mechanisms"
+  },
+  {
+    "name": "Quality Inspection vs Quality Control",
+    "description": "QC process terminology - should be True",
+    "source": {
+      "label": "quality inspection",
+      "parent_class": "quality assurance process",
+      "synonyms": ["product inspection", "quality check"]
+    },
+    "target": {
+      "label": "quality control",
+      "parent_class": "quality management",
+      "synonyms": ["quality inspection", "QC", "quality verification"]
+    },
+    "ground_truth": true,
+    "notes": "Quality inspection and quality control are often used interchangeably"
+  },
+  {
+    "name": "Defect vs Deviation",
+    "description": "Quality terminology with different meanings - should be False",
+    "source": {
+      "label": "defect",
+      "parent_class": "quality issue",
+      "synonyms": ["fault", "flaw", "imperfection"]
+    },
+    "target": {
+      "label": "deviation",
+      "parent_class": "process variation",
+      "synonyms": ["variance", "variation"]
+    },
+    "ground_truth": false,
+    "notes": "Defect is a product issue, deviation is a process variation"
+  },
+  {
+    "name": "Predictive Maintenance vs Condition-Based Maintenance",
+    "description": "Maintenance strategies - should be True",
+    "source": {
+      "label": "predictive maintenance",
+      "parent_class": "maintenance strategy",
+      "synonyms": ["PdM", "condition monitoring maintenance"]
+    },
+    "target": {
+      "label": "condition-based maintenance",
+      "parent_class": "proactive maintenance",
+      "synonyms": ["predictive maintenance", "CBM", "on-condition maintenance"]
+    },
+    "ground_truth": true,
+    "notes": "These terms are often used interchangeably in industry"
+  },
+  {
+    "name": "Preventive Maintenance vs Corrective Maintenance",
+    "description": "Different maintenance approaches - should be False",
+    "source": {
+      "label": "preventive maintenance",
+      "parent_class": "maintenance strategy",
+      "synonyms": ["scheduled maintenance", "planned maintenance"]
+    },
+    "target": {
+      "label": "corrective maintenance",
+      "parent_class": "maintenance strategy",
+      "synonyms": ["reactive maintenance", "breakdown maintenance"]
+    },
+    "ground_truth": false,
+    "notes": "Preventive is proactive, corrective is reactive - opposite approaches"
+  },
+  {
+    "name": "SCADA System vs Supervisory Control System",
+    "description": "Industrial control system terminology - should be True",
+    "source": {
+      "label": "SCADA system",
+      "parent_class": "industrial control system",
+      "synonyms": ["supervisory control and data acquisition"]
+    },
+    "target": {
+      "label": "supervisory control system",
+      "parent_class": "control system",
+      "synonyms": ["SCADA", "supervisory system", "monitoring and control system"]
+    },
+    "ground_truth": true,
+    "notes": "SCADA is the acronym for supervisory control and data acquisition"
+  },
+  {
+    "name": "PLC vs DCS",
+    "description": "Different types of industrial controllers - should be False",
+    "source": {
+      "label": "PLC",
+      "parent_class": "industrial controller",
+      "synonyms": ["programmable logic controller", "programmable controller"]
+    },
+    "target": {
+      "label": "DCS",
+      "parent_class": "industrial controller",
+      "synonyms": ["distributed control system", "process control system"]
+    },
+    "ground_truth": false,
+    "notes": "PLC and DCS are different control system architectures"
+  },
+  {
+    "name": "IoT Gateway vs Edge Gateway",
+    "description": "IoT infrastructure terminology - should be True",
+    "source": {
+      "label": "IoT gateway",
+      "parent_class": "network device",
+      "synonyms": ["Internet of Things gateway", "IoT edge device"]
+    },
+    "target": {
+      "label": "edge gateway",
+      "parent_class": "edge computing device",
+      "synonyms": ["IoT gateway", "edge device", "fog gateway"]
+    },
+    "ground_truth": true,
+    "notes": "IoT gateway and edge gateway are the same in IoT context"
+  },
+  {
+    "name": "Machine Learning Model vs Digital Twin",
+    "description": "Different AI/digital concepts - should be False",
+    "source": {
+      "label": "machine learning model",
+      "parent_class": "AI model",
+      "synonyms": ["ML model", "predictive model"]
+    },
+    "target": {
+      "label": "digital twin",
+      "parent_class": "virtual model",
+      "synonyms": ["virtual replica", "digital replica"]
+    },
+    "ground_truth": false,
+    "notes": "ML model is a type of algorithm, digital twin is a virtual representation"
+  },
+  {
+    "name": "OEE vs Overall Equipment Effectiveness",
+    "description": "Manufacturing KPI terminology - should be True",
+    "source": {
+      "label": "OEE",
+      "parent_class": "performance metric",
+      "synonyms": ["equipment effectiveness"]
+    },
+    "target": {
+      "label": "Overall Equipment Effectiveness",
+      "parent_class": "manufacturing KPI",
+      "synonyms": ["OEE", "equipment performance metric", "production efficiency"]
+    },
+    "ground_truth": true,
+    "notes": "OEE is the acronym for Overall Equipment Effectiveness"
+  }
+]
